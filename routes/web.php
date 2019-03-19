@@ -80,6 +80,4 @@ Route::get('/login', function () {
 });
 Route::post('/login', ['as' => 'postLogin', 'uses' => 'formController@login']);
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
