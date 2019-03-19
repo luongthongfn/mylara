@@ -61,12 +61,25 @@ Route::get('/model/many-many-2/{id}', function ($id) {
 Route::get('/view', function () {
     return view('layout/master');
 });
+
+
 Route::get('/view/form', function () {
     return view('layout/form');
 });
 Route::post('/view/form', ['as' => '/view/postForm', 'uses' => 'formController@form1']);
 
+
+Route::get('/register', function () {
+    return view('layout/register');
+});
+Route::post('/resister', ['as' => 'postRegister', 'uses' => 'auth\registerController@register']);
+
+
 Route::get('/login', function () {
     return view('layout/login');
 });
 Route::post('/login', ['as' => 'postLogin', 'uses' => 'formController@login']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
     <form action="{{route('postLogin')}}" method="POST">
         @csrf
         <label for="">user name</label>

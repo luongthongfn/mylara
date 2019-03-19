@@ -25,18 +25,19 @@ class MylaraSeeder extends Seeder
         $carID = $this->UniqueRandomNumbersWithinRange(1, 10, 10);
         $colorID = $this->UniqueRandomNumbersWithinRange(1, 10, 10);
         //
+
         for ($i = 0; $i < $limit; $i++) {
-            DB::table('product')->insert([
-                'name' => $faker->text(20),
-                'price' => $faker->randomNumber(2),
-                'cate_id' => rand(1, 10),
+            DB::table('category')->insert([
+                'name' => $faker->name,
                 'created_at'=>date("Y-m-d H:i:s")
             ]);
         }
 
         for ($i = 0; $i < $limit; $i++) {
-            DB::table('category')->insert([
-                'name' => $faker->name,
+            DB::table('product')->insert([
+                'name' => $faker->text(20),
+                'price' => $faker->randomNumber(2),
+                'cate_id' => rand(1, 10),
                 'created_at'=>date("Y-m-d H:i:s")
             ]);
         }
@@ -75,7 +76,7 @@ class MylaraSeeder extends Seeder
         }
         for ($i = 0; $i < $limit; $i++) {
             DB::table('thanhviens')->insert([
-                'user' => 'user1'.$i,
+                'user' => 'user'.$i,
                 'pass' => Hash::make('123123'),
                 'email' => $faker->unique()->safeEmail,
                 'created_at'=>date("Y-m-d H:i:s")
