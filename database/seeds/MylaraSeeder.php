@@ -82,6 +82,15 @@ class MylaraSeeder extends Seeder
                 'created_at'=>date("Y-m-d H:i:s")
             ]);
         }
+        for ($i = 0; $i < $limit; $i++) {
+            DB::table('admins')->insert([
+                'name' => 'user'.$i,
+                'email' => $faker->unique()->safeEmail,
+                'password' => Hash::make('123123'),
+                'created_at'=>date("Y-m-d H:i:s")
+            ]);
+        }
+
 
     }
 }

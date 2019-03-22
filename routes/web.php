@@ -69,15 +69,20 @@ Route::get('/view/form', function () {
 Route::post('/view/form', ['as' => '/view/postForm', 'uses' => 'formController@form1']);
 
 
-Route::get('/register', function () {
-    return view('layout/register');
-});
-Route::post('/resister', ['as' => 'postRegister', 'uses' => 'auth\registerController@register']);
+// --------------------------------------------------------
+// --------------------------------------------------------
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+// --------------------------------------------------------
+// --------------------------------------------------------
 
 
-Route::get('/login', function () {
-    return view('layout/login');
-});
-Route::post('/login', ['as' => 'postLogin', 'uses' => 'formController@login']);
+Route::get('admin/login', 'Admin\AdminLoginController@getLogin')->name('admin/login');
+Route::post('admin/postLogin', ['as'=>'admin/postLogin', 'uses'=>'Admin\AdminLoginController@postLogin']);
 
+Route::get('admin/register', 'Admin\AdminRegisterController@getRegister')->name('admin/register');;
+Route::post('admin/postRegister', ['as'=>'admin/postRegister', 'uses'=>'Admin\AdminRegisterController@register']);
+
+
+Route::get('admin/home', 'AdminController@index');
 
