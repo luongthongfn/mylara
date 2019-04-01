@@ -19,56 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    echo "test router";
-});
-
 Route::get('/info', 'Mycontroller@info');
-
-Route::get('/model/one-one-1/{id}', function ($id) {
-    $data = App\models\Product::find($id)->productImage()->get()->toArray();
-    // $data = App\models\Product::select('id', 'name')->get()->toArray();
-    // $data = DB::table('product')->where('price', '>', 10)->get();
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
-});
-
-Route::get('/model/one-one-2/{id}', function ($id) {
-    $data = App\models\Images::find($id)->images()->get()->toArray();
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
-});
-
-Route::get('/model/many-many-1/{id}', function ($id) {
-    $data = App\models\car::find($id)->car()->get()->toArray();
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
-});
-
-Route::get('/model/many-many-2/{id}', function ($id) {
-    $data = App\models\color::find($id)->color()->get()->toArray();
-    // $data = App\models\color::select('name')->get();
-    echo '<pre>';
-    print_r($data);
-    echo '</pre>';
-});
 
 // view================================================
 
 Route::get('/view', function () {
     return view('layout/master');
 });
-
-
-Route::get('/view/form', function () {
-    return view('layout/form');
-});
-Route::post('/view/form', ['as' => '/view/postForm', 'uses' => 'formController@form1']);
-
-
 // --------------------------------------------------------
 // --------------------------------------------------------
 Auth::routes();
@@ -77,12 +34,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 // --------------------------------------------------------
 
 
-Route::get('admin/login', 'Admin\AdminLoginController@getLogin')->name('admin/login');
-Route::post('admin/postLogin', ['as'=>'admin/postLogin', 'uses'=>'Admin\AdminLoginController@postLogin']);
+Route::post('/logout', 'Admin\Auth\AdminLoginController@logout')->name('logout');
+Route::group(['prefix' => '/admin'], function () {
+    Route::get('/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('admin/login');
+    Route::post('/postLogin', 'Admin\Auth\AdminLoginController@login')->name('admin/postLogin');
 
-Route::get('admin/register', 'Admin\AdminRegisterController@getRegister')->name('admin/register');;
-Route::post('admin/postRegister', ['as'=>'admin/postRegister', 'uses'=>'Admin\AdminRegisterController@register']);
+    Route::get('/register', 'Admin\Auth\AdminRegisterController@getRegister')->name('admin/register');;
+    Route::post('/postRegister', 'Admin\Auth\AdminRegisterController@register')->name('admin/postRegister');
 
 
-Route::get('admin/home', 'AdminController@index');
+    Route::get('/', 'Admin\AdminController@index');
+    Route::get('/home', 'Admin\AdminController@index');
+});
+
 

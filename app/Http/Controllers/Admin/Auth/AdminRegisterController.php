@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Auth;
 
-use App\models\Admins;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\models\Admins;
 
 class AdminRegisterController extends Controller
 {
@@ -37,7 +35,7 @@ class AdminRegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guestAdmin');
     }
 
     /**
@@ -50,7 +48,7 @@ class AdminRegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -59,7 +57,7 @@ class AdminRegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Admins
+     * @return \App\models\Admim
      */
     protected function create(array $data)
     {
@@ -71,10 +69,4 @@ class AdminRegisterController extends Controller
             'remember_token' => $data['_token']
         ]);
     }
-
-    public function getRegister()
-    {
-        return view('admin/register');
-    }
-
 }

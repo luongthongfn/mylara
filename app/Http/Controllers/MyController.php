@@ -9,7 +9,7 @@ class MyController extends Controller
     //
     public function info()
     {
-        echo 'info function in Mycontroller';
+        phpinfo();
 
     }
 }

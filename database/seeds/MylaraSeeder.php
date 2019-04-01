@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 
 class MylaraSeeder extends Seeder
@@ -26,70 +27,52 @@ class MylaraSeeder extends Seeder
         $colorID = $this->UniqueRandomNumbersWithinRange(1, 10, 10);
         //
 
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('category')->insert([
-                'name' => $faker->name,
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
+        // for ($i = 0; $i < $limit; $i++) {
+        //     DB::table('categories')->insert([
+        //         'name' => $faker->name,
+        //         'created_at'=>date("Y-m-d H:i:s")
+        //     ]);
+        // }
 
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('product')->insert([
-                'name' => $faker->text(20),
-                'price' => $faker->randomNumber(2),
-                'cate_id' => rand(1, 10),
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
+        // for ($i = 0; $i < $limit; $i++) {
+        //     DB::table('cars')->insert([
+        //         'name' => $faker->name,
+        //         'price' => $faker->randomNumber(2),
+        //         'created_at'=>date("Y-m-d H:i:s")
+        //     ]);
+        // }
 
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('images')->insert([
-                'name' => $faker->imageURL(),
-                'product_id' => rand(1, 10),
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
+        // for ($i = 0; $i < $limit; $i++) {
+        //     DB::table('colors')->insert([
+        //         'name' => $faker->colorName,
+        //         'created_at'=>date("Y-m-d H:i:s")
+        //     ]);
+        // }
 
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('cars')->insert([
-                'name' => $faker->name,
-                'price' => $faker->randomNumber(2),
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
+        // for ($i = 0; $i < $limit; $i++) {
+        //     DB::table('car_colors')->insert([
+        //         'car_id' => rand(1,10),
+        //         'color_id' => rand(1,10),
+        //         'car_id' => $carID[$i],
+        //         'color_id' => $colorID[$i],
+        //         'created_at'=>date("Y-m-d H:i:s")
+        //     ]);
+        // }
 
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('colors')->insert([
-                'name' => $faker->colorName,
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
-
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('car_colors')->insert([
-                'car_id' => rand(1,10),
-                'color_id' => rand(1,10),
-                'car_id' => $carID[$i],
-                'color_id' => $colorID[$i],
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('thanhviens')->insert([
-                'user' => 'user'.$i,
-                'pass' => Hash::make('123123'),
-                'email' => $faker->unique()->safeEmail,
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
-        for ($i = 0; $i < $limit; $i++) {
-            DB::table('admins')->insert([
-                'name' => 'user'.$i,
-                'email' => $faker->unique()->safeEmail,
-                'password' => Hash::make('123123'),
-                'created_at'=>date("Y-m-d H:i:s")
-            ]);
-        }
+        // for ($i = 0; $i < $limit; $i++) {
+        //     DB::table('admins')->insert([
+        //         'name' => 'user'.$i,
+        //         'email' => $faker->unique()->safeEmail,
+        //         'password' => Hash::make('123123'),
+        //         'created_at'=>date("Y-m-d H:i:s")
+        //     ]);
+        // }
+        DB::table('admins')->insert([
+            'name' => 'onliva',
+            'email' => 'luongthongvfu@gmail.com',
+            'password' => Hash::make('123123'),
+            'created_at'=>date("Y-m-d H:i:s")
+        ]);
 
 
     }

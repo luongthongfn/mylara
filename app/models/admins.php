@@ -11,6 +11,7 @@ class admins extends Authenticatable
     //
     use Notifiable;
 
+    // protected $guard = 'admins';
     protected $fillable = [
         'name', 'email', 'password',
     ];

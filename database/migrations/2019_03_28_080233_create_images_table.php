@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThanhviensTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateThanhviensTable extends Migration
      */
     public function up()
     {
-        Schema::create('thanhviens', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user');
-            $table->string('email')->unique();
-            $table->string('pass');
-            $table->rememberToken();
+            $table->string('image');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateThanhviensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('thanhviens');
+        Schema::dropIfExists('images');
     }
 }
