@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\models\Admins;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -38,9 +38,12 @@ class AdminRegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guestAdmin');
+        $this->middleware('guestAdmin:admins');
     }
-
+    protected function guard()
+    {
+        return Auth::guard('admins');
+    }
     public function showRegistrationForm()
     {
         return view('admin/register');
