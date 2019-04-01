@@ -39,7 +39,7 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('admin/login');
     Route::post('/postLogin', 'Admin\Auth\AdminLoginController@login')->name('admin/postLogin');
 
-    Route::get('/register', 'Admin\Auth\AdminRegisterController@getRegister')->name('admin/register');;
+    Route::get('/register', 'Admin\Auth\AdminRegisterController@showRegistrationForm')->name('admin/register');;
     Route::post('/postRegister', 'Admin\Auth\AdminRegisterController@register')->name('admin/postRegister');
 
 

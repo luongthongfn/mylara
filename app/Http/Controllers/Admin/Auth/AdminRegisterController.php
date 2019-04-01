@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\models\Admins;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 class AdminRegisterController extends Controller
 {
     /*
@@ -38,6 +41,12 @@ class AdminRegisterController extends Controller
         $this->middleware('guestAdmin');
     }
 
+    public function showRegistrationForm()
+    {
+        return view('admin/register');
+    }
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -48,7 +57,7 @@ class AdminRegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
