@@ -8,10 +8,10 @@ use App\Http\Middleware\AdminAuth;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('authAdmin:admins');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('authAdmin:admins');
+    // }
 
     public function index()
     {
