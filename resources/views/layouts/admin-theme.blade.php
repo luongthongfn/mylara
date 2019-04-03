@@ -42,7 +42,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title">
+                        <a href="{{url('admin')}}" class="site_title">
                             <i class="fa fa-paw"></i>
                             <span>Gentelella Alela!</span>
                         </a>
@@ -80,7 +80,7 @@
                                 <li>
                                     <a><i class="fa fa-th-list"></i> Category <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">All category</a></li>
+                                        <li><a href="{{route('admin.category.index')}}">All category</a></li>
                                     </ul>
                                 </li>
 

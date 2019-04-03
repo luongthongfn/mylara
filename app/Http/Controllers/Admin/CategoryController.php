@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\models\Categories;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        // $data = Categories::all();
+        // dd($data);
+        return view('admin/category/list');
     }
 
     /**
@@ -41,10 +44,10 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Test1s  $test1s
+     * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Test1s $test1s)
+    public function show(Categories $Categories)
     {
         //
     }
@@ -52,10 +55,10 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Test1s  $test1s
+     * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Test1s $test1s)
+    public function edit(Categories $Categories)
     {
         //
     }
@@ -64,10 +67,10 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Test1s  $test1s
+     * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Test1s $test1s)
+    public function update(Request $request, Categories $Categories)
     {
         //
     }
@@ -75,10 +78,10 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Test1s  $test1s
+     * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Test1s $test1s)
+    public function destroy(Categories $Categories)
     {
         //
     }

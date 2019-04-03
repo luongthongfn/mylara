@@ -19,8 +19,8 @@ var DEST = 'build/',
 
 gulp.task('scripts', function() {
     return gulp.src([
-        'src/js/helpers/*.js',
-        'src/js/*.js',
+        // 'src/js/helpers/*.js',
+        'src/js/**/*.js',
       ])
       .pipe(sourcemaps.init())
       .pipe(concat('custom.js'))

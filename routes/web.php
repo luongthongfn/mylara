@@ -69,16 +69,14 @@ Route::post('admin/postLogin', 'Admin\Auth\AdminLoginController@login')->name('a
 Route::get('admin/register', 'Admin\Auth\AdminRegisterController@showRegistrationForm')->name('admin/register');
 Route::post('admin/postRegister', 'Admin\Auth\AdminRegisterController@register')->name('admin/postRegister');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['authAdmin:admins']], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => ['authAdmin:admins']], function () {
 
-    Route::get('/', 'Admin\AdminController@index');
-    Route::get('/home', 'Admin\AdminController@index');
-
-
+    Route::get('/', 'AdminController@index');
+    Route::get('/home', 'AdminController@index');
 
 
-    Route::get('/theme', function () {
-        return view('admin/category/projects');
-    });
+
+
+    Route::resource('/category', 'CategoryController');
 
 });
