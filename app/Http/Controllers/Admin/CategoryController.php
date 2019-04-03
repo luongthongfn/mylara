@@ -15,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // $data = Categories::all();
+        $data = Categories::all();
         // dd($data);
-        return view('admin/category/list');
+        return view('admin/category/list', compact('data'));
     }
 
     /**
@@ -39,6 +39,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        // $data = $request->all();
+        $this->validate($request, [
+            'name' => 'required|unique:categories|max:255',
+        ]);
+
+
+
+
     }
 
     /**
