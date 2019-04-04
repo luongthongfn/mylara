@@ -68,7 +68,7 @@ class MylaraSeeder extends Seeder
         //     ]);
         // }
         DB::table('admins')->insert([
-            'name' => 'onliva',
+            'name' => '123123',
             'email' => 'luongthongvfu@gmail.com',
             'password' => Hash::make('123123'),
             'created_at'=>date("Y-m-d H:i:s")

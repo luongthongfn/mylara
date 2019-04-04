@@ -11,9 +11,29 @@
 
         <div class="row">
             <div class="col-md-12">
+                @dump($data)
+                @if (session()->has('notify'))
+                @php($notify = session('notify'))
+                <div class="x_content">
+                    @foreach ($notify['msg'] as $item)
+
+                    <div class="alert alert-{{ $notify['lv'] }} alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">×</span>
+                        </button>
+                        {{ $item }}
+                    </div>
+
+                    @endforeach
+
+                </div>
+                @endif
+
+
                 <div class="x_panel">
 
                     @include('include.admin.page-title')
+
 
                     <div class="x_content">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -486,9 +506,10 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <select type="text" id="slt_parent_id" name="slt_parent_id"
                                                         required="required" class="form-control col-md-7 col-xs-12">
-                                                        <option value=0></option>
-                                                        <option value=1>asd</option>
-                                                        <option value=2>asd</option>
+                                                        {{-- <option value=0 {{ old('slt_parent_id') == 0 ? 'selected' : '' }}></option>
+                                                        <option value=1 {{ old('slt_parent_id') == 2 ? 'selected' : '' }}>asd</option>
+                                                        <option value=2 {{ old('slt_parent_id') == 3 ? 'selected' : '' }}>asd</option> --}}
+                                                        <?php cate_parent($data) ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -498,7 +519,7 @@
                                                     for="first-name"> Category Name <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="txt_name" name="txt_name" required="required"
+                                                    <input type="text" id="txt_name" name="txt_name" required="required" value="{{ old('txt_name') }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -507,7 +528,7 @@
                                                     for="first-name"> Category Order
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="number" id="num_order" name="num_order"
+                                                    <input type="number" id="num_order" name="num_order" value="{{ old('num_order') }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -516,7 +537,7 @@
                                                     for="first-name"> Category Keywords
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="txt_keywords" name="txt_keywords"
+                                                    <input type="text" id="txt_keywords" name="txt_keywords" value="{{ old('txt_keywords') }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -526,7 +547,7 @@
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <textarea type="text" id="txt_description" name="txt_description"
-                                                        rows="6" class="form-control col-md-7 col-xs-12"></textarea>
+                                                        rows="6" class="form-control col-md-7 col-xs-12">{{ old('txt_description') }}</textarea>
                                                 </div>
                                             </div>
 

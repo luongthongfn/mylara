@@ -51,7 +51,7 @@
                     "Barryvdh\\Debugbar\\": "src/"
                 },
                 "files": [
-                    "src/helpers.php"
+                    "app/library/helpers.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
