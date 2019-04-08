@@ -61,427 +61,38 @@
                                             <thead>
                                                 <tr>
                                                     <th style="width: 1%">#</th>
-                                                    <th style="width: 20%">Project Name</th>
-                                                    <th>Team Members</th>
-                                                    <th>Project Progress</th>
-                                                    <th>Status</th>
-                                                    <th style="width: 20%">#Edit</th>
+                                                    <th style="width: 20%">Cate Name</th>
+                                                    <th style="width: 20%">Parent category</th>
+                                                    <th style="width: 20%">#Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $i = 0 ?>
+                                                @foreach ($data as $item)
+                                                <?php $i++ ?>
                                                 <tr>
-                                                    <td>#</td>
+                                                    <td>{{ $i }}</td>
                                                     <td>
-                                                        <a>Pesamakini Backend UI</a>
+                                                        <a>{{ $item['name'] }}</a>
                                                         <br />
                                                         <small>Created 01.01.2015</small>
                                                     </td>
                                                     <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="57"></div>
-                                                        </div>
-                                                        <small>57% Complete</small>
+                                                        {{ isset($item['parent_name'] ) ? $item['parent_name'] : '-' }}
                                                     </td>
                                                     <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
+                                                        <a href="#" class="btn btn-primary btn-xs">
+                                                            <i class="fa fa-folder"></i> View
                                                         </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
+                                                        <a href="#" class="btn btn-info btn-xs">
+                                                            <i class="fa fa-pencil"></i> Edit
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-xs">
+                                                            <i class="fa fa-trash-o"></i> Delete
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="47"></div>
-                                                        </div>
-                                                        <small>47% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="77"></div>
-                                                        </div>
-                                                        <small>77% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="60"></div>
-                                                        </div>
-                                                        <small>60% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="12"></div>
-                                                        </div>
-                                                        <small>12% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="35"></div>
-                                                        </div>
-                                                        <small>35% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="87"></div>
-                                                        </div>
-                                                        <small>87% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="77"></div>
-                                                        </div>
-                                                        <small>77% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>
-                                                        <a>Pesamakini Backend UI</a>
-                                                        <br />
-                                                        <small>Created 01.01.2015</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                            <li>
-                                                                <img src="{{ asset('theme/production/images/user.png') }}"
-                                                                    class="avatar" alt="Avatar">
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                    <td class="project_progress">
-                                                        <div class="progress progress_sm">
-                                                            <div class="progress-bar bg-green" role="progressbar"
-                                                                data-transitiongoal="77"></div>
-                                                        </div>
-                                                        <small>77% Complete</small>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                            class="btn btn-success btn-xs">Success</button>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
-                                                                class="fa fa-folder"></i> View
-                                                        </a>
-                                                        <a href="#" class="btn btn-info btn-xs"><i
-                                                                class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
-                                                                class="fa fa-trash-o"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                         <!-- end project list -->
@@ -506,10 +117,13 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <select type="text" id="slt_parent_id" name="slt_parent_id"
                                                         required="required" class="form-control col-md-7 col-xs-12">
-                                                        {{-- <option value=0 {{ old('slt_parent_id') == 0 ? 'selected' : '' }}></option>
-                                                        <option value=1 {{ old('slt_parent_id') == 2 ? 'selected' : '' }}>asd</option>
-                                                        <option value=2 {{ old('slt_parent_id') == 3 ? 'selected' : '' }}>asd</option> --}}
-                                                        <?php cate_parent($data) ?>
+                                                        <option value=0
+                                                            {{ old('slt_parent_id') == 0 ? 'selected' : '' }}></option>
+                                                        {{-- {{-- <option value=1 {{ old('slt_parent_id') == 2 ? 'selected' : '' }}>asd
+                                                        </option>--}}
+                                                        {{-- <option value=2 {{ old('slt_parent_id') == 3 ? 'selected' : '' }}>asd
+                                                        </option> --}}
+                                                        <?php cate_parent($data); ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -519,7 +133,8 @@
                                                     for="first-name"> Category Name <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="txt_name" name="txt_name" required="required" value="{{ old('txt_name') }}"
+                                                    <input type="text" id="txt_name" name="txt_name" required="required"
+                                                        value="{{ old('txt_name') }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -528,7 +143,8 @@
                                                     for="first-name"> Category Order
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="number" id="num_order" name="num_order" value="{{ old('num_order') }}"
+                                                    <input type="number" id="num_order" name="num_order"
+                                                        value="{{ old('num_order') }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -537,7 +153,8 @@
                                                     for="first-name"> Category Keywords
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="txt_keywords" name="txt_keywords" value="{{ old('txt_keywords') }}"
+                                                    <input type="text" id="txt_keywords" name="txt_keywords"
+                                                        value="{{ old('txt_keywords') }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -547,7 +164,8 @@
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <textarea type="text" id="txt_description" name="txt_description"
-                                                        rows="6" class="form-control col-md-7 col-xs-12">{{ old('txt_description') }}</textarea>
+                                                        rows="6"
+                                                        class="form-control col-md-7 col-xs-12">{{ old('txt_description') }}</textarea>
                                                 </div>
                                             </div>
 

@@ -17,7 +17,15 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Categories::select('id', 'name', 'order', 'parent_id')->get()->toArray();
-        // dd($data);
+        $data1 = [];
+        foreach ($data as $item => $arr) {
+            echo $arr['parent_id'];
+            $new_item = $arr['parent_id'] != 0 ?  array('parent_name' => Categories::where('id', '=', $arr['parent_id'])->first()->toArray()['name'] )   : [];
+            $arr = array_merge($arr, $new_item);
+            $data1 []= $arr;
+
+        }
+        $data = $data1;
         return view('admin/category/list', compact('data'));
     }
 
