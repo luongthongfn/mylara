@@ -11,17 +11,16 @@
 
         <div class="row">
             <div class="col-md-12">
-                @dump($data)
                 @if (session()->has('notify'))
                 @php($notify = session('notify'))
                 <div class="x_content">
-                    @foreach ($notify['msg'] as $item)
+                    @foreach ($notify['msg'] as $noti)
 
                     <div class="alert alert-{{ $notify['lv'] }} alert-dismissible fade in" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                 aria-hidden="true">×</span>
                         </button>
-                        {{ $item }}
+                        {{ $noti }}
                     </div>
 
                     @endforeach
@@ -38,22 +37,33 @@
                     <div class="x_content">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation">
+                                    <a href="{{ route('admin.category.index') }}" id="home-tab">List category</a>
+                                </li>
                                 <li role="presentation" class="active">
                                     <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab"
                                         aria-expanded="true">Edit category</a>
                                 </li>
+                                <li role="presentation" class="">
+                                    <a href="{{route('admin.category.create') }}" role="tab" id="profile-tab"><span
+                                            class="badge bg-green">+</span> Add new category</a>
+                                </li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane fade" id="tab_content1"
+                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
                                     aria-labelledby="profile-tab">
                                     <div class="x_content">
                                         <br>
+
                                         <form id="demo-form2" data-parsley-validate=""
                                             class="form-horizontal form-label-left" novalidate="" method="POST"
-                                            action="{{ route('admin.category.edit') }}">
+                                            action="{{ route('admin.category.update', $item->id) }}">
                                             @csrf
-                                            @method('post')
+                                            @method('PATCH')
+
+                                            {{-- @dump($item) --}}
+                                            {{-- @dd($data) --}}
 
                                             <div class="form-group">
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -62,13 +72,9 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <select type="text" id="slt_parent_id" name="slt_parent_id"
                                                         required="required" class="form-control col-md-7 col-xs-12">
-                                                        <option value=0
-                                                            {{ old('slt_parent_id') == 0 ? 'selected' : '' }}></option>
-                                                        {{-- {{-- <option value=1 {{ old('slt_parent_id') == 2 ? 'selected' : '' }}>asd
-                                                        </option>--}}
-                                                        {{-- <option value=2 {{ old('slt_parent_id') == 3 ? 'selected' : '' }}>asd
-                                                        </option> --}}
-                                                        <?php cate_parent($data); ?>
+                                                        <option value=0></option>
+
+                                                        <?php cate_parent($data, 0, '', $item->parent_id); ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -79,7 +85,7 @@
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <input type="text" id="txt_name" name="txt_name" required="required"
-                                                        value="{{ old('txt_name') }}"
+                                                        value="{{ $item->name }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -89,7 +95,7 @@
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <input type="number" id="num_order" name="num_order"
-                                                        value="{{ old('num_order') }}"
+                                                        value="{{ $item->order }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -99,7 +105,7 @@
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <input type="text" id="txt_keywords" name="txt_keywords"
-                                                        value="{{ old('txt_keywords') }}"
+                                                        value="{{ $item->keywords }}"
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
@@ -110,7 +116,7 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <textarea type="text" id="txt_description" name="txt_description"
                                                         rows="6"
-                                                        class="form-control col-md-7 col-xs-12">{{ old('txt_description') }}</textarea>
+                                                        class="form-control col-md-7 col-xs-12">{{ $item->description }}</textarea>
                                                 </div>
                                             </div>
 

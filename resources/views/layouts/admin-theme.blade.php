@@ -81,7 +81,14 @@
                                     <a><i class="fa fa-th-list"></i> Category <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{route('admin.category.index')}}">All category</a></li>
-                                        <li><a href="{{route('admin.category.index')}}#tab_content2">Add category</a></li>
+                                        <li><a href="{{route('admin.category.create')}}">Add category</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-cubes"></i> Products <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{route('admin.product.index')}}">All Products</a></li>
+                                        <li><a href="{{route('admin.product.create')}}">Add Products</a></li>
                                     </ul>
                                 </li>
 

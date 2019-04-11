@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -16,16 +17,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Categories::select('id', 'name', 'order', 'parent_id')->get()->toArray();
-        $data1 = [];
-        foreach ($data as $item => $arr) {
-            echo $arr['parent_id'];
-            $new_item = $arr['parent_id'] != 0 ?  array('parent_name' => Categories::where('id', '=', $arr['parent_id'])->first()->toArray()['name'] )   : [];
-            $arr = array_merge($arr, $new_item);
-            $data1 []= $arr;
+        $sql = "
+            SELECT `cate`.*, `cate_p`.`name` AS `parent_name`
+            FROM
+                `categories` AS `cate`
+                LEFT JOIN `categories` as `cate_p`
+                    ON `cate`.`parent_id` = `cate_p`.`id`";
 
-        }
-        $data = $data1;
+        $data = DB::select($sql);
+
+        // dd($data);
         return view('admin/category/list', compact('data'));
     }
 
@@ -36,7 +37,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $data = Categories::select('id', 'name', 'order', 'parent_id')->get()->toArray();
+        return view('admin/category/add', compact('data'));
     }
 
     /**
@@ -59,7 +61,7 @@ class CategoryController extends Controller
             ];
 
             return redirect()
-                ->to(url()->previous() . '#tab_content2')
+                ->back()
                 ->with(['notify' => $notify])
                 ->withInput();
         }
@@ -78,7 +80,7 @@ class CategoryController extends Controller
             'msg' => ['Add success !'],
         ];
         return redirect()
-            ->to(url()->previous() . '#tab_content2')
+            ->back()
             ->with(['notify' => $notify]);
 
     }
@@ -89,9 +91,9 @@ class CategoryController extends Controller
      * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $Categories)
+    public function show(Categories $Categories, $id)
     {
-        //
+        return "show method";
     }
 
     /**
@@ -100,9 +102,16 @@ class CategoryController extends Controller
      * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $Categories)
+    public function edit(Categories $Categories, $id)
     {
-        //
+        // $data = $Categories->find($id)->get()->map(function ($item) {
+        //     return (object) $item->toArray();
+        // })->all();
+        $data = $Categories->select('id', 'name', 'parent_id')->get()->toArray();
+        $item = $Categories->find($id);
+        // dd($item);
+
+        return view('admin/category/edit', compact('data', 'item'));
     }
 
     /**
@@ -112,9 +121,44 @@ class CategoryController extends Controller
      * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $Categories)
+    public function update(Request $request, Categories $Categories, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'txt_name' => 'required|max:255|unique:categories,name,'.$id,
+            'slt_parent_id' => 'different:categories:id',
+        ],[
+            'slt_parent_id.different' => 'Cant choose it self as parent category !'
+        ]);
+
+        if ($validator->fails()) {
+            $notify = [
+                'lv' => 'danger',
+                'msg' => $validator->errors()->all(),
+            ];
+
+            return redirect()
+                ->back()
+                ->with(['notify' => $notify])
+                ->withInput();
+        }
+
+        $Categories->find($id)->update([
+            'name' => $request->txt_name,
+            'alias' => str_slug($request->txt_name),
+            'order' => $request->num_order ?? 0,
+            'parent_id' => $request->slt_parent_id,
+            'keywords' => $request->txt_keywords,
+            'description' => $request->txt_description,
+            // 'created_at' => now(),
+        ]);
+        $notify = [
+            'lv' => 'success',
+            'msg' => ['edit success asd !'],
+
+        ];
+        return redirect()
+            ->back()
+            ->with(['notify' => $notify]);
     }
 
     /**
@@ -123,8 +167,22 @@ class CategoryController extends Controller
      * @param  \App\Categories  $Categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $Categories)
+    public function destroy(Categories $Categories, $id)
     {
-        //
+        $data = $Categories->where('parent_id', '=', $id)->count();
+        // dd($data);
+        if ($data > 0) {
+            $notify = [
+                'lv' => 'danger',
+                'msg' => ["Cant delete, this Category has $data child !"]
+            ];
+            return redirect()->back()->with(['notify' => $notify]);
+        }
+        $Categories->destroy($id);
+        $notify = [
+            'lv' => 'success',
+            'msg' => ['Delete success !'],
+        ];
+        return redirect()->back()->with(['notify' => $notify]);
     }
 }
