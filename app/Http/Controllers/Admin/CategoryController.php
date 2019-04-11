@@ -17,14 +17,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $sql = "
-            SELECT `cate`.*, `cate_p`.`name` AS `parent_name`
-            FROM
-                `categories` AS `cate`
-                LEFT JOIN `categories` as `cate_p`
-                    ON `cate`.`parent_id` = `cate_p`.`id`";
+        // $sql = "
+        //     SELECT `cate`.*, `cate_p`.`name` AS `parent_name`
+        //     FROM
+        //         `categories` AS `cate`
+        //         LEFT JOIN `categories` as `cate_p`
+        //             ON `cate`.`parent_id` = `cate_p`.`id`";
 
-        $data = DB::select($sql);
+        // $data = DB::select($sql);
+        $data = Categories::leftJoin('categories as cp', 'categories.parent_id', '=', 'cp.id')->select('categories.*','cp.name as parent_name')->get()->all();
 
         // dd($data);
         return view('admin/category/list', compact('data'));

@@ -36,19 +36,19 @@ class MylaraSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        $limit = 10;
+        $limit = 11;
         $carID = $this->UniqueRandomNumbersWithinRange(1, 10, 10);
         $colorID = $this->UniqueRandomNumbersWithinRange(1, 10, 10);
         //
 
-        // for ($i = 0; $i < $limit; $i++) {
+        // for ($i = 1; $i < $limit; $i++) {
         //     DB::table('categories')->insert([
         //         'name' => $faker->name,
         //         'created_at'=>date("Y-m-d H:i:s")
         //     ]);
         // }
 
-        // for ($i = 0; $i < $limit; $i++) {
+        // for ($i = 1; $i < $limit; $i++) {
         //     DB::table('cars')->insert([
         //         'name' => $faker->name,
         //         'price' => $faker->randomNumber(2),
@@ -56,14 +56,14 @@ class MylaraSeeder extends Seeder
         //     ]);
         // }
 
-        // for ($i = 0; $i < $limit; $i++) {
+        // for ($i = 1; $i < $limit; $i++) {
         //     DB::table('colors')->insert([
         //         'name' => $faker->colorName,
         //         'created_at'=>date("Y-m-d H:i:s")
         //     ]);
         // }
 
-        // for ($i = 0; $i < $limit; $i++) {
+        // for ($i = 1; $i < $limit; $i++) {
         //     DB::table('car_colors')->insert([
         //         'car_id' => rand(1,10),
         //         'color_id' => rand(1,10),
@@ -73,7 +73,7 @@ class MylaraSeeder extends Seeder
         //     ]);
         // }
 
-        // for ($i = 0; $i < $limit; $i++) {
+        // for ($i = 1; $i < $limit; $i++) {
         //     DB::table('admins')->insert([
         //         'name' => 'user'.$i,
         //         'email' => $faker->unique()->safeEmail,
@@ -106,7 +106,7 @@ class categoryTable extends Seeder
         // $faker = Faker\Factory::create();
         $limit = 10;
 
-        for ($i = 0; $i < $limit; $i++) {
+        for ($i = 1; $i < $limit; $i++) {
             DB::table('categories')->insert([
                 'name' => 'cate'.$i,
                 'alias' => 'cate'.$i,
@@ -126,7 +126,7 @@ class productTable extends Seeder
         $faker = Faker\Factory::create();
         $limit = 10;
 
-        for ($i = 0; $i < $limit; $i++) {
+        for ($i = 1; $i < $limit; $i++) {
             DB::table('products')->insert([
                 'name' => 'product'.$i,
                 'alias' => 'product'.$i,

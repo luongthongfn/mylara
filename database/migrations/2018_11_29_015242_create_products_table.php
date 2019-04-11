@@ -23,10 +23,10 @@ class CreateProductsTable extends Migration
             $table->string('keywords');
             $table->string('description');
             $table->integer('price');
-            $table->integer('cate_id')->unsigned();
+            $table->integer('cate_id')->unsigned()->default(1);
             $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('user_id')->unsigned()->default(1);;
+            $table->foreign('user_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
     }

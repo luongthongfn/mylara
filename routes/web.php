@@ -61,6 +61,9 @@ Route::get('/view', function () {
 // --------------------------------------------------------
 // --------------------------------------------------------
 
+Route::get('/upload', 'UploadTest@getUpload')->name('getUpload');
+Route::post('/upload', 'UploadTest@postUpload')->name('postUpload');
+
 Route::post('/logout', 'Admin\Auth\AdminLoginController@logout')->name('logout');
 
 Route::get('admin/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('admin/login');
@@ -78,5 +81,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 
 
     Route::resource('/category', 'CategoryController');
+    Route::resource('/product', 'ProductController');
 
 });
