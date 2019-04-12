@@ -12,7 +12,7 @@
         @csrf
         file 1: <input type="file" name="test_file" id="test_file">
         <br/>
-        files 2: <input type="file" name="test_file2[]" id="test_file2[]" multiple>
+        {{-- files 2: <input type="file" name="test_file2[]" id="test_file2[]" multiple> --}}
         <br/>
         <div id="app"></div>
         <button type="submit">send</button>
