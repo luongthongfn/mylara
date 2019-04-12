@@ -84,3 +84,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
     Route::resource('/product', 'ProductController');
 
 });
+
+// MediaManager
+ctf0\MediaManager\MediaRoutes::routes();
