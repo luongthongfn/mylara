@@ -10,6 +10,7 @@ class UploadTest extends Controller
     {
         return view('test.upload');
     }
+
     public function postUpload(Request $request)
     {
 
