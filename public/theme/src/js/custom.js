@@ -32,8 +32,12 @@ function init_sidebar() {
         $RIGHT_COL.css('min-height', contentHeight);
     };
 
+    var openUpMenu = function () {
+        $SIDEBAR_MENU.find('li').removeClass('active active-sm');
+        $SIDEBAR_MENU.find('li ul').slideUp();
+    }
+
     $SIDEBAR_MENU.find('a').on('click', function (ev) {
-        console.log('clicked - sidebar_menu');
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
@@ -44,14 +48,15 @@ function init_sidebar() {
         } else {
             // prevent closing menu if we are on child menu
             if (!$li.parent().is('.child_menu')) {
-                $SIDEBAR_MENU.find('li').removeClass('active active-sm');
-                $SIDEBAR_MENU.find('li ul').slideUp();
+                openUpMenu();
             } else {
-                if ($BODY.is(".nav-sm")) {
-                    $li.parent().find("li").removeClass("active active-sm");
-                    $li.parent().find("li ul").slideUp();
+                if ($BODY.is('nav-sm')) {
+                    if (!$li.parent().is('child_menu')) {
+                        openUpMenu();
+                    }
                 }
             }
+
             $li.addClass('active');
 
             $('ul:first', $li).slideDown(function () {
@@ -62,8 +67,6 @@ function init_sidebar() {
 
     // toggle small or large menu
     $MENU_TOGGLE.on('click', function () {
-        console.log('clicked - menu toggle');
-
         if ($BODY.hasClass('nav-md')) {
             $SIDEBAR_MENU.find('li.active ul').hide();
             $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
@@ -76,9 +79,7 @@ function init_sidebar() {
 
         setContentHeight();
 
-        $('.dataTable').each(function () {
-            $(this).dataTable().fnDraw();
-        });
+        $('.dataTable').each(function () { $(this).dataTable().fnDraw(); });
     });
 
     // check active menu
@@ -102,30 +103,22 @@ function init_sidebar() {
         $('.menu_fixed').mCustomScrollbar({
             autoHideScrollbar: true,
             theme: 'minimal',
-            mouseWheel: {
-                preventDefault: true
-            }
+            mouseWheel: { preventDefault: true }
         });
     }
-};
+}
 // /Sidebar
 
-var randNum = function () {
-    return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
-};
-
-
-
 // Panel toolbox
-$(document).ready(function() {
-    $('.collapse-link').on('click', function() {
+$(document).ready(function () {
+    $('.collapse-link').on('click', function () {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
 
         // fix for some div with hardcoded fix class
         if ($BOX_PANEL.attr('style')) {
-            $BOX_CONTENT.slideToggle(200, function(){
+            $BOX_CONTENT.slideToggle(200, function () {
                 $BOX_PANEL.removeAttr('style');
             });
         } else {
@@ -145,7 +138,7 @@ $(document).ready(function() {
 // /Panel toolbox
 
 // Tooltip
-$(document).ready(function() {
+$(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip({
         container: 'body'
     });
@@ -153,15 +146,15 @@ $(document).ready(function() {
 // /Tooltip
 
 // Progressbar
-$(document).ready(function() {
-	if ($(".progress .progress-bar")[0]) {
-	    $('.progress .progress-bar').progressbar();
-	}
+$(document).ready(function () {
+    if ($(".progress .progress-bar")[0]) {
+        $('.progress .progress-bar').progressbar();
+    }
 });
 // /Progressbar
 
 // Switchery
-$(document).ready(function() {
+$(document).ready(function () {
     if ($(".js-switch")[0]) {
         var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         elems.forEach(function (html) {
@@ -174,7 +167,7 @@ $(document).ready(function() {
 // /Switchery
 
 // iCheck
-$(document).ready(function() {
+$(document).ready(function () {
     if ($("input.flat")[0]) {
         $(document).ready(function () {
             $('input.flat').iCheck({
@@ -240,7 +233,7 @@ function countChecked() {
 }
 
 // Accordion
-$(document).ready(function() {
+$(document).ready(function () {
     $(".expand").on("click", function () {
         $(this).next().slideToggle(200);
         $expand = $(this).find(">:first-child");
@@ -259,7 +252,7 @@ if (typeof NProgress != 'undefined') {
         NProgress.start();
     });
 
-    $(window).on('load', function() {
+    $(window).on('load', function () {
         NProgress.done();
     });
 }
