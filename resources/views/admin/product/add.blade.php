@@ -37,30 +37,33 @@
 
                     <div class="x_content">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                <li role="presentation" class="">
-                                    <a href="{{route('admin.product.index')}}">List product</a>
+                            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="home-tab" href="{{route('admin.product.index')}}" role="tab"
+                                        aria-controls="home" aria-selected="true">List Products</a>
                                 </li>
-                                <li role="presentation" class="active">
-                                    <a href="{{route('admin.product.create')}}"><span class="badge bg-green">+</span>
-                                        Add new product</a>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{{route('admin.product.create')}}">
+                                        <span class="badge bg-green">+</span>
+                                        Add new Product
+                                    </a>
                                 </li>
-
                             </ul>
                             <div id="myTabContent" class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content2"
+                                <div role="tabpanel" class="tab-pane fade active show" id="tab_content2"
                                     aria-labelledby="profile-tab">
                                     <div class="x_content">
                                         <br>
                                         <form id="demo-form2" data-parsley-validate=""
                                             class="form-horizontal form-label-left" novalidate="" method="POST"
                                             action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
+
                                             @csrf
                                             @method('post')
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Category
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -73,8 +76,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product Name <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -84,8 +87,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product Price <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -94,8 +97,8 @@
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product image <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -105,8 +108,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product slide
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -116,8 +119,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product intro
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -125,8 +128,8 @@
                                                         class="form-control col-md-7 col-xs-12">{{ old('txt_intro') }}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product content
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -134,8 +137,8 @@
                                                         class="form-control col-md-7 col-xs-12">{{ old('txt_content') }}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product Keywords
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -144,8 +147,8 @@
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Product Description
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">

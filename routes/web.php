@@ -37,9 +37,17 @@ Route::get('/view', function () {
 Route::get('/upload', 'UploadTest@getUpload')->name('getUpload');
 Route::post('/upload', 'UploadTest@postUpload')->name('postUpload');
 
-Route::post('/logout', 'Admin\Auth\AdminLoginController@logout')->name('logout');
+Route::get('/demo', function() {
+    return view('vendor.laravel-filemanager.demo');
+});
+
+Route::post('/logout', 'Admin\Auth\AdminLoginController@loggedOut')->name('logout');
 
 Route::get('admin/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('admin/login');
+// Route::get('login', ['as' =>'login'], function () {
+//     auth('authAdmin:admins')->loginUsingId(1);
+//     return redirect()->intended();
+// });
 Route::post('admin/postLogin', 'Admin\Auth\AdminLoginController@login')->name('admin/postLogin');
 
 Route::get('admin/register', 'Admin\Auth\AdminRegisterController@showRegistrationForm')->name('admin/register');
@@ -59,4 +67,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'mi
 });
 
 // MediaManager
-ctf0\MediaManager\MediaRoutes::routes();
+// ctf0\MediaManager\MediaRoutes::routes();
+// Auth::routes();

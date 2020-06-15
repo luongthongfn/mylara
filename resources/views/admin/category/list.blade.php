@@ -42,14 +42,15 @@
                                     <a href="{{route('admin.category.index')}}">List category</a>
                                 </li>
                                 <li role="presentation" class="">
-                                    <a href="{{route('admin.category.create')}}"><span class="badge bg-green">+</span>
-                                        Add new category</a>
+                                    <a href="{{route('admin.category.create')}}">
+                                        <i class="badge bg-green">+</i>
+                                        Add new category
+                                    </a>
                                 </li>
-
                             </ul>
                             <div id="myTabContent" class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
+                                <div role="tabpanel" class="tab-pane fade active show" id="tab_content1"
                                     aria-labelledby="home-tab">
                                     <div class="x_content">
 

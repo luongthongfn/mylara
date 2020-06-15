@@ -20,8 +20,9 @@ class UploadTest extends Controller
         // dump($file_arr2);
         $name = $file->getClientOriginalName();
 
-        $path = $file->storeAs('public/1images', $name);
-        // $path = $file->move('1images', $name);
+        // $path = $file->storePublicly('public');
+        // $path = $file->storeAs('public/1images', $name);
+        $path = $file->move('1images', $name);
 
         // dump($path);
         // dd($request);

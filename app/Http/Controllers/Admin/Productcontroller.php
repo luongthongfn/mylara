@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\models\Products;
 use App\models\Categories;
-use Illuminate\Http\Request;
 
 class Productcontroller extends Controller
 {
@@ -59,19 +60,19 @@ class Productcontroller extends Controller
 
         dd($request);
 
-        Categories::create([
-            'name' => $request->txt_name,
-            'alias' => str_slug($request->txt_name),
-            'price' => $request->num_price,
-            'image' => $request->file_image,
-            'slide' => $request->file_slide,
-            'cate_id' => $request->slt_cate_id,
-            'intro' => $request->txt_intro,
-            'content' => $request->txt_content,
-            'keywords' => $request->txt_keywords,
-            'description' => $request->txt_description,
-            // 'created_at' => now(),
-        ]);
+        // Products::create([
+        //     'name' => $request->txt_name,
+        //     'alias' => str_slug($request->txt_name),
+        //     'price' => $request->num_price,
+        //     'image' => $request->file_image,
+        //     'slide' => $request->file_slide,
+        //     'cate_id' => $request->slt_cate_id,
+        //     'intro' => $request->txt_intro,
+        //     'content' => $request->txt_content,
+        //     'keywords' => $request->txt_keywords,
+        //     'description' => $request->txt_description,
+        //     // 'created_at' => now(),
+        // ]);
         $notify = [
             'lv' => 'success',
             'msg' => ['Add success !'],

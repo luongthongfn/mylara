@@ -38,19 +38,21 @@
 
                     <div class="x_content">
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="{{route('admin.product.index')}}">List Products</a>
+                            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="{{route('admin.product.index')}}" role="tab"
+                                        aria-controls="home" aria-selected="true">List Products</a>
                                 </li>
-                                <li role="presentation" class="">
-                                    <a href="{{route('admin.product.create')}}"><span class="badge bg-green">+</span>
-                                        Add new Product</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('admin.product.create')}}">
+                                        <i class="badge bg-green">+</i>
+                                        Add new Product
+                                    </a>
                                 </li>
-
                             </ul>
                             <div id="myTabContent" class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
+                                <div role="tabpanel" class="tab-pane fade active show" id="tab_content1"
                                     aria-labelledby="home-tab">
                                     <div class="x_content">
 

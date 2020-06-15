@@ -51,7 +51,7 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
 
-                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
+                                <div role="tabpanel" class="tab-pane fade active show" id="tab_content1"
                                     aria-labelledby="profile-tab">
                                     <div class="x_content">
                                         <br>
@@ -65,8 +65,8 @@
                                             {{-- @dump($item) --}}
                                             {{-- @dd($data) --}}
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Category Parent
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -79,8 +79,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Category Name <span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -89,8 +89,8 @@
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Category Order
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -99,8 +99,8 @@
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Category Keywords
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -109,8 +109,8 @@
                                                         class="form-control col-md-7 col-xs-12">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12 label-align"
                                                     for="first-name"> Category Description
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
